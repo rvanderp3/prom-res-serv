@@ -1,10 +1,10 @@
 When working with exported query results, sometimes you just want to view that data in Grafana. The aim of this project is to make prometheus query results easy to consume in Grafana.  
 
-1. Run some prometheus queries:
+1. Run some prometheus queries store the results:
 ~~~
 period=6h
 prom_query() {
-    oc exec -c prometheus -n openshift-monitoring prometheus-k8s-0 -- curl --data-urlencode $@ http://localhost:9090/api/v1/query
+    curl --data-urlencode $@ http://localhost:9090/api/v1/query
 }
 
 prom_query "query=instance:node_cpu_utilisation:rate1m[$period]"  > cpu_utilization
