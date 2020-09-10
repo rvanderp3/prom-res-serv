@@ -1,5 +1,5 @@
 METRICS="node_filesystem_avail_bytes node_filesystem_device_error node_filesystem_files node_filesystem_files_free node_filesystem_free_bytes node_filesystem_readonly node_filesystem_size_bytes"
-OUTDIR=stats/filesystem
+OUTDIR=metrics/filesystem
 PERIOD=6h
 mkdir -p $OUTDIR
 for METRIC in $METRICS; do
