@@ -1,0 +1,14 @@
+METRICS="fluentd_output_status_buffer_available_space_ratio fluentd_output_status_buffer_queue_length fluentd_output_status_buffer_stage_byte_size fluentd_output_status_buffer_stage_length fluentd_output_status_buffer_total_bytes fluentd_output_status_emit_count fluentd_output_status_emit_records fluentd_output_status_flush_time_count fluentd_output_status_num_errors fluentd_output_status_queue_byte_size fluentd_output_status_retry_count fluentd_output_status_retry_wait fluentd_output_status_rollback_count fluentd_output_status_slow_flush_count fluentd_output_status_write_count fluentd_status_buffer_queue_length fluentd_status_buffer_total_bytes fluentd_status_retry_count"
+OUTDIR=metrics/fluentd
+PERIOD=6h
+mkdir -p $OUTDIR
+for METRIC in $METRICS; do
+oc exec -c prometheus -n openshift-monitoring prometheus-k8s-0 -- curl --data-urlencode "query=$METRIC[$PERIOD]" http://localhost:9090/api/v1/query > $OUTDIR/$METRIC
+done
+
+
+
+
+
+
+
