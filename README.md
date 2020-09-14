@@ -1,6 +1,6 @@
 When working with exported query results, sometimes you just want to view that data in Grafana. The aim of this project is to make prometheus query results easy to consume in Grafana.  
 
-1. Run some prometheus queries store the results:
+1. Collect output of prometheus queries:
 ~~~
 period=6h
 prom_query() {
