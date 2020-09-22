@@ -24,3 +24,21 @@ Note: The result server starts up on port 8000
 4. Create a query.  The name of the metric you provide corresponds to the result file being served.  
 
 The sole role of the metric server is to map a metric name to a result file.  
+
+
+# Using the collection scripts
+
+## Collecting metrics 
+
+1. Login with `oc`
+
+2. Run the script of choice
+
+3. Metrics will be output to the `metrics` folder
+
+## Using a custom collection period
+export PERIOD=6h
+
+## Accessing the metrics with the `result-serv`
+
+Start `result-serv.py` in the directory containing the collected metrics files .  
