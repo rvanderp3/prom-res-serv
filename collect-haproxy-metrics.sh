@@ -1,7 +1,7 @@
 ROUTES=`oc get route -A -o=jsonpath='{.items[*].metadata.name}'`
 METRICS="haproxy_server_http_average_response_latency_milliseconds haproxy_backend_http_average_response_latency_milliseconds haproxy_server_http_average_connect_latency_milliseconds haproxy_backend_http_average_connect_latency_milliseconds haproxy_server_http_average_queue_latency_milliseconds haproxy_backend_http_average_queue_latency_milliseconds haproxy_server_current_queue haproxy_backend_current_queue haproxy_server_connections_total"
 OUTDIR=metrics/haproxy
-PERIOD=6h
+PERIOD=${PERIOD:-6h}
 mkdir -p $OUTDIR
 for ROUTE in $ROUTES; do
 for METRIC in $METRICS; do
